@@ -58,7 +58,14 @@ namespace Data_Struct.Data_Struct
             }
             else
             {
-                Console.WriteLine("Array is full");
+                max_size *= 2;
+                object[] NewArray = new object(max_size);
+                for(int i=0; i<length;i++)
+                {
+                    NewArray[i] = array[i];
+                }
+                NewArray[length] = value;
+                length++;
             }
         }
         
