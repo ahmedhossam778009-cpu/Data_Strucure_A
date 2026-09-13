@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data Struct\Class1.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Data Struct\Array.cs" />
+    <Compile Include="Data Struct\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

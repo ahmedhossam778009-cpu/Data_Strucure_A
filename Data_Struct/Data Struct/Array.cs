@@ -15,8 +15,18 @@ namespace Data_Struct.Data_Struct
         public bool IsFull()
         { 
         return length == max_size;  
-        }  
-
+        }
+        public object this[int index]
+        {
+            get
+            {
+                return (object)array[index];
+            }
+            set
+            {
+                array[index] = value;
+            }
+        }
         public MArrayList(int size)
         {
             max_size = size;
