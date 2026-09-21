@@ -1,89 +1,47 @@
 ﻿using Data_Struct.Data_Struct;
+using Data_Struct.Data_Struct.Linked_List;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Data_Struct
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            // Create MArrayList
-            MArrayList list = new MArrayList(5);
-
-            // =========================
-            // Add
-            // =========================
-
-            list.Add(10);
-            list.Add(20);
-            list.Add(30);
-
-            Console.WriteLine("After Add:");
-            list.PrintList();
+            MLinkedList<object> test1 = new MLinkedList<object>(); // Create a new linked list of type object
+            DLinkedList<object> test2 = new DLinkedList<object>(); // Create a new doubly linked list of type object
 
 
-            // =========================
-            // Length
-            // =========================
+            test1.Add(101);
+            test1.Add(102);
+            test1.Add(103);
+            test1.Add("Ahmed");
 
-            Console.WriteLine("\nLength: " + list.Length);
+            test1.Travers();
+            Console.WriteLine("Last Node: {0}", test1.GetLast().Data);
 
+            test1.Reverse();
+            Console.WriteLine("Last Node: {0}", test1.GetLast().Data);
 
-            // =========================
-            // IndexOf
-            // =========================
+            //test2.Add(101);
 
-            Console.WriteLine("\nIndex of 20: " + list.IndexOf(20));
+            //test2.Add(102);
+            //test2.Add(103);
+            //test2.Add("Ahmed");
+            //test2.Travers();
+            //test2.RemoveAt(1); 
 
+            //test2.InsertAt(22, 1);
+            //test2.Travers(); 
+            //test2.RemovLast();
+            //test2.Travers();
+            //Console.WriteLine("Last Node: {0}", test2.GetLast().Data);
 
-            // =========================
-            // Insert
-            // =========================
-
-            list.Insert(1, 15);
-
-            Console.WriteLine("\nAfter Insert(1, 15):");
-            list.PrintList();
-
-
-            // =========================
-            // RemoveAt
-            // =========================
-
-            object removedItem = list.RemoveAt(2);
-
-            Console.WriteLine("\nAfter RemoveAt(2):");
-            list.PrintList();
-
-            Console.WriteLine("Removed: " + removedItem);
-
-
-            // =========================
-            // Remove
-            // =========================
-
-            list.Remove(15);
-
-            Console.WriteLine("\nAfter Remove(15):");
-            list.PrintList();
-
-
-            // =========================
-            // IsFull
-            // =========================
-
-            Console.WriteLine("\nIs Full: " + list.IsFull());
-
-
-            // =========================
-            // Final Length
-            // =========================
-
-            Console.WriteLine("Final Length: " + list.Length);
         }
     }
 }
