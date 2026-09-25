@@ -50,6 +50,8 @@
     <Compile Include="Data Struct\Linked List\LinkedList.cs" />
     <Compile Include="Data Struct\Linked List\Node.cs" />
     <Compile Include="Data Struct\Program.cs" />
+    <Compile Include="Data Struct\Stack &amp; Queue\MQueue.cs" />
+    <Compile Include="Data Struct\Stack &amp; Queue\MStack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

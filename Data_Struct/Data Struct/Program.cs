@@ -1,6 +1,7 @@
 ﻿using Data_Struct.Data_Struct;
 using Data_Struct.Data_Struct.HashTable;
 using Data_Struct.Data_Struct.Linked_List;
+using Data_Struct.Data_Struct.Stack___Queue;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +15,15 @@ namespace Data_Struct
     {
         static void Main(string[] args)
         {
-
-            HashMap test = new HashMap(7);
-
-            test.Set("Ahmed", 77);
-            test.Set("omar", 90);
-            test.Set("omar", 23);
-            test.Set("Iyad", 7);
-            test.Set("popy", 56);
-
-            Console.WriteLine(test.Get("omar"));
+            MStack<int> test = new MStack<int>();
+            test.push(1);
+            test.push(2);
+            test.push(3);
+            test.push(4);
+            test.push(5);
+            test.peek();
+            test.pop();
+            test.peek();
         }
     }
 }
