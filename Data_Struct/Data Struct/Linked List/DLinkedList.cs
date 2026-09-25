@@ -89,10 +89,20 @@ namespace Data_Struct.Data_Struct.Linked_List
         {
             if (this.head == null)
             {
-                Console.WriteLine("the list is empty");
+                Console.WriteLine("The list is empty");
                 return;
             }
-            this.head = this.head.Next; // Remove the first node by updating the head to the next node
+
+            this.head = this.head.Next;
+
+            if (this.head == null)
+            {
+                this.tail = null;
+            }
+            else
+            {
+                this.head.Previous = null;
+            }
         }
 
         public DNode<T> GetAt(int index)
@@ -124,81 +134,109 @@ namespace Data_Struct.Data_Struct.Linked_List
                 return;
             }
 
-            if (index == 0)
+            if (index < 0)
             {
-               
-                this.head = this.head.Next;
-                return ;
-            }
-
-            var prev = this.GetAt(index-1);
-            if (prev == null || prev.Next == null)
-            {
-                Console.WriteLine("Index out of bounds");
+                Console.WriteLine("Index is out of bounds");
                 return;
             }
-           // prev.Next = prev.Next.Next;
-           var next = prev.Next.Next;
-            next.Previous = prev;
+
+            if (index == 0)
+            {
+                RemoveFirst();
+                return;
+            }
+
+            var prev = this.GetAt(index - 1);
+
+            if (prev == null || prev.Next == null)
+            {
+                Console.WriteLine("Index is out of bounds");
+                return;
+            }
+
+            var removedNode = prev.Next;
+            var next = removedNode.Next;
+
             prev.Next = next;
 
-
-
-
+            if (next != null)
+            {
+                next.Previous = prev;
+            }
+            else
+            {
+                this.tail = prev;
+            }
         }
+
+
+
+
+
 
         public void InsertAt(T data, int Index)
         {
-            if (this.head == null)
+            if (Index < 0)
             {
-                Console.WriteLine("the list is empty");
+                Console.WriteLine("Index is out of bounds");
                 return;
             }
+
             if (Index == 0)
             {
-                this.head = new DNode<T>(data);
+                AddFirst(data);
+                return;
             }
-            var prev = this.GetAt(Index - 1) == null ? this.GetLast() : this.GetAt(Index - 1);
+
+            var prev = this.GetAt(Index - 1);
+
+            if (prev == null)
+            {
+                Console.WriteLine("Index is out of bounds");
+                return;
+            }
+
             var next = prev.Next;
 
             var node = new DNode<T>(data, next);
 
-            // head -> prev -> node -> next   ---------  tail
-
-            //  1       3       6       8     7     4     3
-
-            next.Previous = node;
             node.Previous = prev;
             prev.Next = node;
 
+            if (next != null)
+            {
+                next.Previous = node;
+            }
+            else
+            {
+                this.tail = node;
+            }
         }
-
 
 
         public void RemovLast()
         {
-
             if (this.head == null)
             {
-                Console.WriteLine("the list is empty");
+                Console.WriteLine("The list is empty");
                 return;
             }
-          
+
             if (this.head.Next == null)
             {
                 this.head = null;
+                this.tail = null;
                 return;
-
             }
-            var lastnode = GetLast();
-            var pre = lastnode.Previous;
-            pre.Next = null;
-            this.tail = pre;    
+
+            this.tail = this.tail.Previous;
+            this.tail.Next = null;
         }
 
         public void Clear()
         {
-            this.head = null; // Clear the linked list by setting the head to null
+            this.head = null;
+            this.tail = null;
         }
     }
 }

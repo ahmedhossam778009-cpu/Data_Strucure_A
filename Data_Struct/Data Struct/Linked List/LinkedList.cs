@@ -40,7 +40,7 @@ namespace Data_Struct.Data_Struct.Linked_List
 
         public MNode<T> GetLast() // Return the last node in the linked list
         {
-            if (head == null)
+            if (this.head == null)
                 return null;
 
             var temb = head;
@@ -149,23 +149,30 @@ namespace Data_Struct.Data_Struct.Linked_List
             return null;
         }
 
-        public void InsertAt(T data, int Index)
+        public void InsertAt(T data, int index)
         {
-            if (this.head == null)
+            if (index < 0)
             {
-                Console.WriteLine("the list is empty");
+                Console.WriteLine("Index is out of bounds");
                 return;
             }
-            if (Index == 0)
-            {
-                this.head = new MNode<T>(data);
-            }
-            var prev = this.GetAt(Index - 1)==null?this.GetLast(): this.GetAt(Index - 1);
 
+            if (index == 0)
+            {
+                AddFirst(data);
+                return;
+            }
+
+            var prev = this.GetAt(index - 1);
+
+            if (prev == null)
+            {
+                Console.WriteLine("Index is out of bounds");
+                return;
+            }
 
             var node = new MNode<T>(data, prev.Next);
             prev.Next = node;
-
         }
 
 
@@ -215,6 +222,8 @@ namespace Data_Struct.Data_Struct.Linked_List
                 Console.WriteLine($"There is 1Node only in the LinkedList {this.head.Data}");
                 return;
             }
+            //[1,2,3,4,5] 
+
             var First = this.head;
             var Second = First.Next;
             while(Second!=null)
