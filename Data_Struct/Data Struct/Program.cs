@@ -15,15 +15,25 @@ namespace Data_Struct
     {
         static void Main(string[] args)
         {
-            MStack<int> test = new MStack<int>();
-            test.push(1);
-            test.push(2);
-            test.push(3);
-            test.push(4);
-            test.push(5);
+            MQueue<int> test = new MQueue<int>();
+
+            test.Enqueue(1);
+            test.Enqueue(2);
+            test.Enqueue(3);
+            test.Enqueue(4);
+            Console.WriteLine(test.Length);
             test.peek();
-            test.pop();
+            test.Dequeue();
+            test.Dequeue();
+            test.Dequeue();
+            test.Dequeue();
+            Console.WriteLine(test.Length);
             test.peek();
+            test.Dequeue();
+
+
+
+
         }
     }
 }
